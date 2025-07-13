@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-300 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
+
+  <!-- Background Image -->
+  <div class="absolute inset-0 -z-10">
+    <img src="WhatsApp Image 2025-07-13 at 20.23.46_9f2d631c.jpg" alt="Cloud Background" class="w-full h-full object-cover opacity-40 dark:opacity-10" />
+  </div>
+
+  <!-- Dark Mode Toggle (top-right) -->
+  <div class="absolute top-4 right-4 flex items-center gap-2 z-20">
+    <label for="darkToggle" class="text-sm font-medium">Dark Mode</label>
+    <input type="checkbox" id="darkToggle" class="toggle-checkbox w-10 h-5 rounded-full bg-gray-300 peer focus:outline-none peer-checked:bg-blue-600 relative" />
+  </div>
+
+  <!-- Weather App Container -->
+  <main class="flex flex-col items-center justify-center min-h-screen p-4">
+
+    <!-- App Card -->
+    <div class="w-full max-w-xl bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 rounded-xl shadow-lg p-6 space-y-4 backdrop-blur-md">
+
+      <!-- Title -->
+      <h1 class="text-3xl font-bold text-blue-800 dark:text-blue-300 text-center">Weather App</h1>
+
+      <!-- Search Inputs -->
+      <div class="flex gap-2">
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Enter city"
+          class="flex-grow px-4 py-2 rounded border dark:bg-gray-800 dark:border-gray-600 dark:text-white shadow-sm"
+        />
+        <button id="searchBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">Search</button>
+      </div>
+
+      <!-- Use Current Location -->
+      <div class="text-center">
+        <button id="currentLocationBtn" class="text-sm text-blue-700 dark:text-blue-300 underline hover:text-blue-500">
+          Use Current Location
+        </button>
+      </div>
+
+      <!-- Recent Searches Dropdown -->
+      <div id="recentCities" class="hidden">
+        <label class="block text-sm font-semibold mb-1">Recent Searches:</label>
+        <select id="cityDropdown" class="w-full px-3 py-2 rounded dark:bg-gray-800 dark:border-gray-600 dark:text-white border shadow-sm"></select>
+      </div>
+
+      <!-- Error Message -->
+      <div id="error" class="hidden text-sm text-red-600 dark:text-red-400"></div>
+
+      <!-- Weather Info -->
+      <div id="weatherDisplay" class="text-center space-y-2"></div>
+    </div>
+
+    <!-- Forecast Section -->
+    <section class="mt-10 w-full max-w-6xl px-4">
+      <h2 class="text-2xl font-semibold mb-6 text-blue-900 dark:text-blue-300 text-left"></h2>
+      <div id="forecastDisplay" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <!-- Forecast cards will be injected via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('change', () => {
+      document.documentElement.classList.toggle('dark', toggle.checked);
+    });
+  </script>
+
+  <!-- External JS -->
+  <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+/* === Global Styles === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #87ceeb, #00bfff);
+  color: #333;
+  min-height: 100vh;
+  padding: 2rem;
+  transition: background 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark-mode {
+  background: #1a1a1a;
+  color: #f5f5f5;
+}
+
+/* === App Container === */
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.dark-mode .app {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* === Title === */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  color: #004466;
+}
+
+.dark-mode h1 {
+  color: #00c3ff;
+}
+
+/* === Search === */
+.search-box {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.search-box button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-box button:hover {
+  background-color: #0056b3;
+}
+
+/* === Location Link === */
+.use-location {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.use-location a {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.use-location a:hover {
+  color: #0056b3;
+}
+
+.dark-mode .use-location a {
+  color: #66d9ff;
+}
+
+.dark-mode .use-location a:hover {
+  color: #33bbff;
+}
+
+/* === Error Message === */
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* === Weather Info === */
+.weather {
+  text-align: center;
+}
+
+.weather h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.weather .temp {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.weather .desc {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.weather .details {
+  font-size: 1rem;
+  color: #444;
+}
+
+.dark-mode .weather .details {
+  color: #ccc;
+}
+
+/* === Forecast Section === */
+.forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* bigger boxes */
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.forecast-day {
+  background-color: rgba(255, 255, 255, 0.25); /* slightly more opaque */
+  border-radius: 16px; /* bigger radius */
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  font-weight: 600;
+  color: #003366;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, transform 0.3s ease;
+  cursor: default;
+  min-width: 160px;
+}
+
+.forecast-day:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.forecast-day img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 0.5rem;
+}
+
+.forecast-day .day {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.forecast-day .temps {
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  color: #004080;
+}
+
+.dark-mode .forecast-day {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a0cfff;
+  box-shadow: none;
+}
+
+.dark-mode .forecast-day:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* === Dark Mode Toggle === */
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* === Accessibility: Focus Styles === */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+}
